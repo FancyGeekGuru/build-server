@@ -1,0 +1,13 @@
+.vscode
+/node_modules
+/node_modules_
+/dist
+/coverage
+
+*.js
+!jest.config.js
+!jest.config*.js
+
+.DS_Store
+.env.migration.*
+backup*

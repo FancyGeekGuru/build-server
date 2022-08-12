@@ -1,0 +1,6 @@
+{
+    "db": {
+      "url": " postgres://admin:Orion225@@%@localhost:5432/builder-server",
+      "migrations": "../migrations"
+    }
+}
