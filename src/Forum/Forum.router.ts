@@ -53,7 +53,7 @@ export class ForumRouter extends Router {
       )
 
       return link
-    } catch (error) {
+    } catch (error:any) {
       throw new HTTPError(
         'Error creating forum post',
         { errors: error.message },

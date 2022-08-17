@@ -8,21 +8,22 @@ export function migrate(
   commandArguments: string[],
   migrationsDir: string = __dirname
 ) {
-  const CONNECTION_STRING = env.get('CONNECTION_STRING', '')
-
+  const CONNECTION_STRING = env.get('CONNECTION_STRING', 'postgres://yhutgsjqgycxla:b9b37bc0a18e1831bb3ee9c1f7c1e88b0ad90820385f193a0eb9fce28ab9e220@ec2-44-209-186-51.compute-1.amazonaws.com:5432/d20ujcgicqq1rm')
   if (!CONNECTION_STRING) {
     throw new Error(
       'Please set a CONNECTION_STRING env variable before running migrations'
     )
   }
-  console.log(migrationsDir)
+
   const spawnArgs = [
     '--database-url-var',
-    CONNECTION_STRING,
+    'CONNECTION_STRING',
     '--migration-file-language',
     'ts',
     '--migrations-dir',
     migrationsDir,
+    '--ignore-pattern',
+    '\\..*|.*migrate(.ts)?',
     ...commandArguments,
   ]
 
@@ -30,7 +31,7 @@ export function migrate(
   console.dir(`node-pg-migrate ${spawnArgs.join(' ')}`)
 
   const child = spawn(
-    path.resolve(migrationsDir, 'node-pg-migrate'),
+    'node-pg-migrate',
     spawnArgs,
     {
       env: { ...process.env, CONNECTION_STRING },
@@ -38,17 +39,14 @@ export function migrate(
   )
 
   child.on('error', function (error) {
-    console.log(error)
-    // console.log(error.message)
+    console.log(error.message)
   })
 
   child.stdout.on('data', function (data) {
-    console.log('222 error')
     console.log(data.toString())
   })
 
   child.stderr.on('data', function (data) {
-    console.log('3333 error')
     console.log(data.toString())
   })
 

@@ -21,6 +21,7 @@ import { TiersRouter } from './Tiers'
 import { S3Router } from './S3'
 import { ShareRouter } from './Share'
 import { AnalyticsRouter } from './Analytics'
+import { UserRouter } from './User'
 // import { NFTRouter } from './NFT'
 import { db } from './database'
 import { ExpressApp } from './common/ExpressApp'
@@ -28,7 +29,7 @@ import { withLogger } from './middleware'
 import { ProjectByCoordRouter } from './Project'
 import { errorHandler } from './common/errorHandler'
 
-const SERVER_PORT = env.get('SERVER_PORT', '5000')
+//const SERVER_PORT = env.get('SERVER_PORT', '5000')
 const API_VERSION = env.get('API_VERSION', 'v1')
 const CORS_ORIGIN = env.get('CORS_ORIGIN', '*')
 const CORS_METHOD = env.get('CORS_METHOD', '*')
@@ -65,6 +66,7 @@ new S3Router(app).mount()
 new ShareRouter(app).mount()
 new AnalyticsRouter(app).mount()
 new TiersRouter(app).mount()
+new UserRouter(app).mount()
 // new NFTRouter(app).mount()
 
 app.use(errorHandler)
@@ -80,5 +82,6 @@ if (require.main === module) {
 async function startServer() {
   console.log('Connecting to the DB!')
   await db.connect()
-  return app.listen(SERVER_PORT)
+  console.log("port: ", env.get('PORT', '5000'))
+  return app.listen(env.get('PORT', '5000'))
 }

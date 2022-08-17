@@ -1,6 +1,6 @@
 import { Wallet as EthersWallet } from 'ethers'
 import { Bytes } from '@ethersproject/bytes'
-import { Signer } from '@ethersproject/abstract-signer'
+//import { Signer } from '@ethersproject/abstract-signer'
 import { Authenticator, AuthLinkType, AuthIdentity } from 'dcl-crypto'
 
 export type Wallet = {
@@ -51,7 +51,7 @@ export const fakePrivateKey =
  */
 export async function createIdentity(
   wallet: EthersWallet,
-  signer: Signer,
+  signer: any,
   expiration: number
 ): Promise<AuthIdentity> {
   const address = await signer.getAddress()

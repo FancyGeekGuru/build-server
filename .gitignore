@@ -1,9 +1,8 @@
 .vscode
-/node_modules
-/node_modules_
-/node_modules__
-/dist
-/coverage
+
+node_modules
+dist
+coverage
 
 *.js
 !jest.config.js

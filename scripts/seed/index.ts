@@ -96,14 +96,14 @@ async function upsertAssets(assetPacks: DefaultAssetPack[]) {
           })
           assetPromises.push(promise)
         }
-      } catch (error) {
+      } catch (error:any) {
         // if the download errors out, we assume asset.decentraland is down and every asset has been uploaded to S3
         console.log(`Ignoring ERROR: ${error.message}`)
       }
     }
     try {
       await Promise.all(assetPromises)
-    } catch (error) {
+    } catch (error:any) {
       console.log(`Error saving assets: ${error.message}`)
     }
   }

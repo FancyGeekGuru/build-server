@@ -41,7 +41,7 @@ const getAuthenticationMiddleware = <
   let errorMessage: string = ''
   try {
     ethAddress = await decodeAuthChain(req)
-  } catch (error) {
+  } catch (error:any) {
     errorMessage = error.message
   }
 
@@ -92,7 +92,7 @@ async function decodeAuthChain(req: Request): Promise<string> {
             errorMessage = res.message!
           }
         }
-      } catch (error) {
+      } catch (error:any) {
         errorMessage = error.message
       }
     }

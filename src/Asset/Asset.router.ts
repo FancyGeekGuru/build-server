@@ -71,7 +71,7 @@ export class AssetRouter extends Router {
   uploadAssetFiles = async (req: Request, res: Response) => {
     try {
       await this.assetFilesRequestHandler!(req, res)
-    } catch (error) {
+    } catch (error:any) {
       const assetPackId = server.extractFromReq(req, 'assetPackId')
       const s3AssetPack = new S3AssetPack(assetPackId)
 
@@ -85,7 +85,7 @@ export class AssetRouter extends Router {
       }
 
       throw new HTTPError('An error occurred trying to upload asset files', {
-        message: error.message,
+        message: error?.message,
       })
     }
   }
