@@ -29,6 +29,8 @@ import { withLogger } from './middleware'
 import { ProjectByCoordRouter } from './Project'
 import { errorHandler } from './common/errorHandler'
 
+const cors = require("cors");
+
 //const SERVER_PORT = env.get('SERVER_PORT', '5000')
 const API_VERSION = env.get('API_VERSION', 'v1')
 const CORS_ORIGIN = env.get('CORS_ORIGIN', '*')
@@ -36,6 +38,10 @@ const CORS_METHOD = env.get('CORS_METHOD', '*')
 
 export const app = new ExpressApp()
 const logs = createConsoleLogComponent()
+
+app.use(cors({
+  origin: '*'
+}));
 
 app
   .useCORS(CORS_ORIGIN, CORS_METHOD)
