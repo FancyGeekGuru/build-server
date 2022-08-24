@@ -63,7 +63,7 @@ export class AssetPackRouter extends Router {
      */
     this.router.get(
       '/assetPacks',
-      withPermissiveAuthentication,
+      // withPermissiveAuthentication,
       withLowercaseQueryParams(['owner']),
       asyncHandler(this.getAssetPacks)
     )
