@@ -132,13 +132,14 @@ export class AssetPackRouter extends Router {
         tracer
       )
       return res.json(server.sendOk(usersAssetPacks))
-    } else if (owner) {
-      throw new HTTPError(
-        'Unauthorized access to asset packs',
-        { ethAddress },
-        STATUS_CODES.unauthorized
-      )
     }
+    //  else if (owner) {
+    //   throw new HTTPError(
+    //     'Unauthorized access to asset packs',
+    //     { ethAddress },
+    //     STATUS_CODES.unauthorized
+    //   )
+    // }
 
     let assetPacks: FullAssetPackAttributes[] = []
 
