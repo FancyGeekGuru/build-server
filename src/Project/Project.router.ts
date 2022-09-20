@@ -44,7 +44,7 @@ export class ProjectRouter extends Router {
      */
     this.router.get(
       '/projects',
-      withAuthentication,
+      // withAuthentication,
       server.handleRequest(this.getProjects)
     )
 
@@ -114,7 +114,8 @@ export class ProjectRouter extends Router {
   }
 
   async getProjects(req: AuthRequest) {
-    const eth_address = req.auth.ethAddress
+    // const eth_address = req.auth.ethAddress
+    const eth_address : any = req.query.ethAddress
     const projectSearcher = new SearchableProject(req)
     return projectSearcher.searchByEthAddress(eth_address)
   }
