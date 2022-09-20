@@ -18,6 +18,8 @@ export class SearchableModel<T> {
     const sortQuery = this.getSortQuery(sort)
     const paginationQuery = this.getPaginationQuery(pagination)
 
+    // console.log(this.tableName, conditionsQuery, sortQuery, paginationQuery)
+
     const [items, counts] = await Promise.all([
       db.query(
         SQL`SELECT *

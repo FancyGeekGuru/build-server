@@ -43,6 +43,7 @@ export class ProjectRouter extends Router {
     /**
      * Get all projects
      */
+
     this.router.get(
       '/projects',
       withAuthentication,
@@ -50,7 +51,7 @@ export class ProjectRouter extends Router {
     )
 
     this.router.get(
-      '/projects/u',
+      '/projects/unity',
       server.handleRequest(this.getProjects_u)
     )
 
@@ -126,8 +127,8 @@ export class ProjectRouter extends Router {
   }
 
   async getProjects_u(req: express.Request) {
-    const eth_address : any = req.query.ethAddress
-    console.log(eth_address);
+    const eth_address = (req.query.ethAddress as string).toLowerCase()
+    // console.log(eth_address);
     const projectSearcher = new SearchableProject(req)
     return projectSearcher.searchByEthAddress(eth_address)
   }

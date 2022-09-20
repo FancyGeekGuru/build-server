@@ -24,6 +24,7 @@ export class SearchableProject {
       requestParameters,
       { eq: searchableProjectProperties }
     )
+    // console.log(parameters, conditions);
     conditions.addExtras('eq', { eth_address })
     conditions.addExtras('eq', { is_deleted: false })
 
