@@ -39,9 +39,9 @@ export class ManifestRouter extends Router {
      */
     this.router.get(
       '/projects/:id/manifest',
-      withAuthentication,
-      withProjectExists,
-      withProjectAuthorization,
+      // withAuthentication,
+      // withProjectExists,
+      // withProjectAuthorization,
       this.getProjectManifest
     )
 
