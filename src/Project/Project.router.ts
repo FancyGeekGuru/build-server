@@ -14,6 +14,7 @@ import { Ownable } from '../Ownable'
 import { Project } from './Project.model'
 import { ProjectAttributes, projectSchema } from './Project.types'
 import { SearchableProject } from './SearchableProject'
+import express from 'express'
 
 export const THUMBNAIL_FILE_NAME = 'thumbnail'
 const FILE_NAMES = [
@@ -113,10 +114,11 @@ export class ProjectRouter extends Router {
     )
   }
 
-  async getProjects(req: AuthRequest) {
+  async getProjects(req: express.Request) {
     // const eth_address = req.auth.ethAddress
+
     const eth_address : any = req.query.ethAddress
-    const projectSearcher = new SearchableProject(req)
+    const projectSearcher = new SearchableProject(req as AuthRequest)
     return projectSearcher.searchByEthAddress(eth_address)
   }
 
