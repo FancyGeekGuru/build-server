@@ -9,7 +9,7 @@
     "build": "tsc -p tsconfig.json",
     "watch:build": "tsc -p tsconfig.json --watch",
     "dev": "ts-node ./src/server.ts",
-    "start": "tsc && node dist/src/server.js",
+    "start": "tsc && node dist/server.js",
     "postinstall": "tsc",
     "deploy": "git add . && git commit -m Heroku && git push heroku master",
     "watch:dev": "nodemon src/server.ts",
